@@ -46,7 +46,7 @@ namespace MaerskLineDDAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WarehouseId,WarehouseName,WarehouseAddress,WarehouseCity,WarehouseRegion,WarehousePostalCode,WarehouseCountry")] Warehouse warehouse)
+        public ActionResult Create([Bind(Include = "WarehouseId,WarehouseName,WarehouseAddress")] Warehouse warehouse)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace MaerskLineDDAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WarehouseId,WarehouseName,WarehouseAddress,WarehouseCity,WarehouseRegion,WarehousePostalCode,WarehouseCountry")] Warehouse warehouse)
+        public ActionResult Edit([Bind(Include = "WarehouseId,WarehouseName,WarehouseAddress")] Warehouse warehouse)
         {
             if (ModelState.IsValid)
             {

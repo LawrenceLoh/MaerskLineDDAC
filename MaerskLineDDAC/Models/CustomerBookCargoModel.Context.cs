@@ -28,7 +28,7 @@ namespace MaerskLineDDAC.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Warehouse> Warehouses { get; set; }
         public virtual DbSet<Ship> Ships { get; set; }
+        public virtual DbSet<Warehouse> Warehouses { get; set; }
     }
 }

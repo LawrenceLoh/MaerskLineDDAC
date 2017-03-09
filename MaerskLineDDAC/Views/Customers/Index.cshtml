@@ -20,15 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CustomerAddress)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerPostcode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerCountry)
-        </th>
         <th></th>
     </tr>
 
@@ -42,15 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CustomerAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerPostcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerCountry)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |

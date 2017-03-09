@@ -21,7 +21,7 @@ namespace MaerskLineDDAC.Models
         public int Warehouse { get; set; }
     
         public virtual Cargo Cargo1 { get; set; }
-        public virtual Warehouse Warehouse1 { get; set; }
         public virtual Ship Ship1 { get; set; }
+        public virtual Warehouse Warehouse1 { get; set; }
     }
 }

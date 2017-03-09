@@ -40,30 +40,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CustomerCity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustomerCity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustomerCity, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustomerPostcode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustomerPostcode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustomerPostcode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustomerCountry, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustomerCountry, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustomerCountry, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
@@ -77,4 +53,17 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyrMed0Iy-n7IbLzA0WnfH1KlTzI_otN8&libraries=places"></script>
+
+<script type="text/javascript">
+
+        google.maps.event.addDomListener(window, 'load', function () {
+
+
+            var input = document.getElementById('CustomerAddress');
+            var places = new google.maps.places.SearchBox(input);
+
+
+        });
+</script> 
 }

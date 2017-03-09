@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MaerskLineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MaerskLineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookId" />
@@ -36,9 +36,6 @@
           <Property Name="CustomerName" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="CustomerContact" Type="varchar" MaxLength="15" />
           <Property Name="CustomerAddress" Type="varchar" MaxLength="60" />
-          <Property Name="CustomerCity" Type="varchar" MaxLength="15" />
-          <Property Name="CustomerPostcode" Type="varchar" MaxLength="15" />
-          <Property Name="CustomerCountry" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Ships">
           <Key>
@@ -55,11 +52,7 @@
           </Key>
           <Property Name="WarehouseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="WarehouseName" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="WarehouseAddress" Type="nvarchar" MaxLength="60" />
-          <Property Name="WarehouseCity" Type="nvarchar" MaxLength="15" />
-          <Property Name="WarehouseRegion" Type="nvarchar" MaxLength="15" />
-          <Property Name="WarehousePostalCode" Type="nvarchar" MaxLength="10" />
-          <Property Name="WarehouseCountry" Type="nvarchar" MaxLength="15" />
+          <Property Name="WarehouseAddress" Type="nvarchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <Association Name="FK_Book_Cargos">
           <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
@@ -132,7 +125,8 @@
             <End Role="Cargos" EntitySet="Cargos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MaerskLineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -146,8 +140,8 @@
           <Property Name="Ship" Type="Int32" Nullable="false" />
           <Property Name="Warehouse" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cargo1" Relationship="Self.FK_Book_Cargos" FromRole="Book" ToRole="Cargos" />
+          <NavigationProperty Name="Ship1" Relationship="Self.FK_Book_Ships" FromRole="Book" ToRole="Ships" />
           <NavigationProperty Name="Warehouse1" Relationship="Self.FK_Book_Warehouses" FromRole="Book" ToRole="Warehouses" />
-          <NavigationProperty Name="Ship1" Relationship="MaerskLineModel.FK_Book_Ships" FromRole="Book" ToRole="Ship" />
         </EntityType>
         <EntityType Name="Cargo">
           <Key>
@@ -172,10 +166,17 @@
           <Property Name="CustomerName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerContact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerCity" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerPostcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerCountry" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cargos" Relationship="Self.FK_Cargos_Customers" FromRole="Customers" ToRole="Cargos" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="ShipId" />
+          </Key>
+          <Property Name="ShipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShipAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Ships" FromRole="Ships" ToRole="Book" />
         </EntityType>
         <EntityType Name="Warehouse">
           <Key>
@@ -183,11 +184,7 @@
           </Key>
           <Property Name="WarehouseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WarehouseName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WarehouseAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="WarehouseCity" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="WarehouseRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="WarehousePostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="WarehouseCountry" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="WarehouseAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Warehouses" FromRole="Warehouses" ToRole="Book" />
         </EntityType>
         <Association Name="FK_Book_Cargos">
@@ -199,6 +196,18 @@
             </Principal>
             <Dependent Role="Book">
               <PropertyRef Name="Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Ships">
+          <End Role="Ships" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ships">
+              <PropertyRef Name="ShipId" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Ship" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -230,9 +239,14 @@
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Cargos" EntityType="Self.Cargo" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Ships" EntityType="Self.Ship" />
           <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
           <AssociationSet Name="FK_Book_Cargos" Association="Self.FK_Book_Cargos">
             <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Ships" Association="Self.FK_Book_Ships">
+            <End Role="Ships" EntitySet="Ships" />
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Book_Warehouses" Association="Self.FK_Book_Warehouses">
@@ -243,34 +257,7 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Cargos" EntitySet="Cargos" />
           </AssociationSet>
-          <EntitySet Name="Ships" EntityType="MaerskLineModel.Ship" />
-          <AssociationSet Name="FK_Book_Ships" Association="MaerskLineModel.FK_Book_Ships">
-            <End Role="Ship" EntitySet="Ships" />
-            <End Role="Book" EntitySet="Books" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Ship">
-          <Key>
-            <PropertyRef Name="ShipId" />
-          </Key>
-          <Property Name="ShipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShippedDate" Type="DateTime" Precision="3" />
-          <Property Name="ShipName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="ShipAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Books" Relationship="MaerskLineModel.FK_Book_Ships" FromRole="Ship" ToRole="Book" />
-        </EntityType>
-        <Association Name="FK_Book_Ships">
-          <End Type="MaerskLineModel.Ship" Role="Ship" Multiplicity="1" />
-          <End Type="MaerskLineModel.Book" Role="Book" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ship">
-              <PropertyRef Name="ShipId" />
-            </Principal>
-            <Dependent Role="Book">
-              <PropertyRef Name="Ship" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -309,9 +296,16 @@
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
                 <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
-                <ScalarProperty Name="CustomerPostcode" ColumnName="CustomerPostcode" />
-                <ScalarProperty Name="CustomerCountry" ColumnName="CustomerCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ships">
+            <EntityTypeMapping TypeName="MaerskLineModel.Ship">
+              <MappingFragment StoreEntitySet="Ships">
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -321,20 +315,6 @@
                 <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
                 <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
                 <ScalarProperty Name="WarehouseAddress" ColumnName="WarehouseAddress" />
-                <ScalarProperty Name="WarehouseCity" ColumnName="WarehouseCity" />
-                <ScalarProperty Name="WarehouseRegion" ColumnName="WarehouseRegion" />
-                <ScalarProperty Name="WarehousePostalCode" ColumnName="WarehousePostalCode" />
-                <ScalarProperty Name="WarehouseCountry" ColumnName="WarehouseCountry" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ships">
-            <EntityTypeMapping TypeName="MaerskLineModel.Ship">
-              <MappingFragment StoreEntitySet="Ships">
-                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
-                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
-                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
-                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

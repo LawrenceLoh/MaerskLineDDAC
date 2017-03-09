@@ -46,7 +46,7 @@ namespace MaerskLineDDAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,CustomerName,CustomerContact,CustomerAddress,CustomerCity,CustomerPostcode,CustomerCountry")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,CustomerName,CustomerContact,CustomerAddress")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace MaerskLineDDAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,CustomerName,CustomerContact,CustomerAddress,CustomerCity,CustomerPostcode,CustomerCountry")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,CustomerName,CustomerContact,CustomerAddress")] Customer customer)
         {
             if (ModelState.IsValid)
             {

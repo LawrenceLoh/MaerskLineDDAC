@@ -342,21 +342,11 @@
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\EditRoles.cshtml" />
     <Content Include="Views\Staff\EditUser.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Cargoes\Create.cshtml" />
     <Content Include="Views\Cargoes\Delete.cshtml" />
     <Content Include="Views\Cargoes\Details.cshtml" />
     <Content Include="Views\Cargoes\Edit.cshtml" />
     <Content Include="Views\Cargoes\Index.cshtml" />
-    <Content Include="Views\Warehouses\Create.cshtml" />
-    <Content Include="Views\Warehouses\Delete.cshtml" />
-    <Content Include="Views\Warehouses\Details.cshtml" />
-    <Content Include="Views\Warehouses\Edit.cshtml" />
-    <Content Include="Views\Warehouses\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\Delete.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
@@ -370,6 +360,16 @@
     <Content Include="Views\Ships\Edit.cshtml" />
     <Content Include="Views\Ships\Index.cshtml" />
     <Content Include="Views\Ships\Confirm.cshtml" />
+    <Content Include="Views\Warehouses\Create.cshtml" />
+    <Content Include="Views\Warehouses\Delete.cshtml" />
+    <Content Include="Views\Warehouses\Details.cshtml" />
+    <Content Include="Views\Warehouses\Edit.cshtml" />
+    <Content Include="Views\Warehouses\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -23,10 +23,6 @@ namespace MaerskLineDDAC.Models
         public int WarehouseId { get; set; }
         public string WarehouseName { get; set; }
         public string WarehouseAddress { get; set; }
-        public string WarehouseCity { get; set; }
-        public string WarehouseRegion { get; set; }
-        public string WarehousePostalCode { get; set; }
-        public string WarehouseCountry { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
