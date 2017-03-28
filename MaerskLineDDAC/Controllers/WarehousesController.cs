@@ -35,6 +35,20 @@ namespace MaerskLineDDAC.Controllers
             return View(warehouse);
         }
 
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Warehouse warehouse = db.Warehouses.Find(id);
+            if (warehouse == null)
+            {
+                return HttpNotFound();
+            }
+            return View(warehouse);
+        }
+
         // GET: Warehouses/Create
         public ActionResult Create()
         {

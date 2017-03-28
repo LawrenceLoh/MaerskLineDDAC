@@ -21,6 +21,11 @@ namespace MaerskLineDDAC.Controllers
             return View(db.Ships.ToList());
         }
 
+        public ActionResult ViewSchedule()
+        {
+            return View(db.Ships.ToList());
+        }
+
         // GET: Ships/Confirm/5
         public ActionResult Confirm(Ship s)
         {
@@ -40,6 +45,20 @@ namespace MaerskLineDDAC.Controllers
 
         // GET: Ships/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ship ship = db.Ships.Find(id);
+            if (ship == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ship);
+        }
+
+        public ActionResult Detail(int? id)
         {
             if (id == null)
             {

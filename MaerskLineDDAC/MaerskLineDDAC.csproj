@@ -370,6 +370,9 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Ships\ViewSchedule.cshtml" />
+    <Content Include="Views\Warehouses\Detail.cshtml" />
+    <Content Include="Views\Ships\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -25,6 +25,7 @@ namespace MaerskLineDDAC.Models
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         [Display(Name = "Departure Date")]
         [DataType(DataType.Date)]
+
         public Nullable<System.DateTime> ShippedDate { get; set; }
         public string ShipName { get; set; }
         public string ShipAddress { get; set; }

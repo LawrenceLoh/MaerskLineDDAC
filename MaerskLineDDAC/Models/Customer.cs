@@ -11,8 +11,7 @@ namespace MaerskLineDDAC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,8 +22,6 @@ namespace MaerskLineDDAC.Models
     
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
-        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string CustomerContact { get; set; }
         public string CustomerAddress { get; set; }
     
