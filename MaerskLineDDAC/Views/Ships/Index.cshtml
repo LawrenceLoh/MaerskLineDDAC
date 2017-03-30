@@ -35,6 +35,7 @@
             @Html.DisplayFor(modelItem => item.ShipAddress)
         </td>
         <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ShipId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ShipId }) 
         </td>
     </tr>

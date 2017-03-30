@@ -60,7 +60,7 @@ namespace MaerskLineDDAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WarehouseId,WarehouseName,WarehouseAddress")] Warehouse warehouse)
+        public ActionResult Create([Bind(Include = "WarehouseName,WarehouseAddress")] Warehouse warehouse)
         {
             if (ModelState.IsValid)
             {

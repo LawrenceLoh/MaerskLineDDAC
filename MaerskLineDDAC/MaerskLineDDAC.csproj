@@ -25,6 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/9db99aaa-a384-4935-9aea-67a5ceb57216/resourcegroups/maersk_line_resource/providers/microsoft.insights/components/ddacmaerskline</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/9db99aaa-a384-4935-9aea-67a5ceb57216/resourcegroups/maersk_line_resource/providers/microsoft.insights/components/ddacmaerskline</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -214,6 +216,7 @@
     <Compile Include="Controllers\ShipsController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\WarehousesController.cs" />
+    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -292,6 +295,19 @@
     <Content Include="Models\CustomerBookCargoModel.edmx.diagram">
       <DependentUpon>CustomerBookCargoModel.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacmaerskline - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacshit - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ddacshit - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MaerskLineDDAC20170329101026 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\testddac - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\westddacmaerskline - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -304,7 +320,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -373,6 +391,8 @@
     <Content Include="Views\Ships\ViewSchedule.cshtml" />
     <Content Include="Views\Warehouses\Detail.cshtml" />
     <Content Include="Views\Ships\Detail.cshtml" />
+    <Content Include="Views\Books\Confirm.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -384,6 +404,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

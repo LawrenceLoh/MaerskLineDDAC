@@ -14,6 +14,7 @@ namespace MaerskLineDDAC.Controllers
     public class BooksController : Controller
     {
         private MaerskLineEntities db = new MaerskLineEntities();
+        private static Book mBook;
 
         // GET: Books
         public ActionResult Index()
@@ -26,6 +27,44 @@ namespace MaerskLineDDAC.Controllers
         {
             var books = db.Books.Include(b => b.Cargo1).Include(b => b.Ship1).Include(b => b.Warehouse1);
             return View(books.ToList());
+        }
+
+
+        public ActionResult Confirm(Book book)
+        {
+            mBook = book;
+            book.Cargo1 = db.Cargos.Find(book.Cargo);
+            book.Ship1 = db.Ships.Find(book.Ship);
+            book.Warehouse1 = db.Warehouses.Find(book.Warehouse);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(book);
+                
+        }
+
+        public ActionResult Save()
+        {
+            if (ModelState.IsValid)
+            {
+                db.Books.Add(mBook);
+                db.SaveChanges();
+
+                Cargo cargo = db.Cargos.Find(mBook.Cargo);
+                cargo.CargoStatus = "Move To WareHouse";
+                db.Entry(cargo).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("ViewSchedule", "Ships");
+            }
+
+            ViewBag.Cargo = new SelectList(db.Cargos.Where(item => item.CargoStatus == "Customer Holding"), "CargoId", "CargoName");
+            ViewBag.Ship = new SelectList(db.Ships, "ShipId", "ShipName", mBook.Ship);
+            ViewBag.Warehouse = new SelectList(db.Warehouses, "WarehouseId", "WarehouseName", mBook.Warehouse); 
+
+            return View();
         }
 
         // GET: Books/Details/5
@@ -61,7 +100,8 @@ namespace MaerskLineDDAC.Controllers
         {
             var userName = User.Identity.GetUserName();
             book.Agent = userName;
-
+           
+            /*
             if (ModelState.IsValid)
             {
                 db.Books.Add(book);
@@ -73,12 +113,10 @@ namespace MaerskLineDDAC.Controllers
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
-            }
+            }*/
 
-            ViewBag.Cargo = new SelectList(db.Cargos.Where(item => item.CargoStatus == "Customer Holding"), "CargoId", "CargoName");
-            ViewBag.Ship = new SelectList(db.Ships, "ShipId", "ShipName", book.Ship);
-            ViewBag.Warehouse = new SelectList(db.Warehouses, "WarehouseId", "WarehouseName", book.Warehouse);
-            return View(book);
+            return RedirectToAction("Confirm", "Books", book);
+    
         }
 
         // GET: Books/Edit/5

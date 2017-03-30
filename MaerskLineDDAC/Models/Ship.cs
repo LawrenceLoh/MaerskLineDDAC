@@ -11,8 +11,7 @@ namespace MaerskLineDDAC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Ship
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +21,6 @@ namespace MaerskLineDDAC.Models
         }
     
         public int ShipId { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
-        [Display(Name = "Departure Date")]
-        [DataType(DataType.Date)]
-
         public Nullable<System.DateTime> ShippedDate { get; set; }
         public string ShipName { get; set; }
         public string ShipAddress { get; set; }
